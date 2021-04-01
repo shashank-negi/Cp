@@ -1,0 +1,33 @@
+void func(Node*root,int i, map<int,vector<int>> & m)
+{
+    if(!root)
+    {
+        
+        return ;
+    }
+     m[i].push_back(root->data);
+    
+ func(root->left,i+1,m);
+ func(root->right,i,m);
+      
+}
+vector<int> diagonal(Node *root)
+{
+ vector<int> ans;
+ if(!root)
+ {
+     return ans;
+ }
+ map<int,vector<int>> m;
+ func(root,1,m);
+ 
+ for(auto x:m)
+ {   for(auto y: x.second)
+     {
+         ans.push_back(y);
+     }
+     
+ }
+ return ans;
+ 
+}

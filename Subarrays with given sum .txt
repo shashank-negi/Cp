@@ -1,0 +1,24 @@
+  int subArraySum(int nums[], int n, int k)
+    {
+    	 
+   
+        
+       map<int,int> m;
+        
+        m[0]=1;
+        
+        int count=0;
+        int sum=0;
+     
+        for(int i=0;i<n;i++)
+        {
+         
+            sum=sum+nums[i];
+            
+            count+=m[sum-k];
+           
+            m[sum]++;
+            
+        }
+        return count;
+    }

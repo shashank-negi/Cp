@@ -1,0 +1,19 @@
+void mirror(Node* node) 
+{
+     Node*t=NULL;
+   if(node==NULL)
+   {
+       
+      return ;
+       
+   }
+   t=node->left;
+   node->left=node->right;
+   node ->right=t;
+   
+     mirror(node->left);
+     mirror(node->right);
+     
+     
+     return ;
+}

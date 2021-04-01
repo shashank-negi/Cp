@@ -1,0 +1,50 @@
+int root(int i,int *parent)
+{
+    while(parent[i]!=i)
+    {
+        i=parent[parent[i]];
+    }
+    return i;
+}
+void union_bysize(int *parent,int x,int y,int*siz){
+    int a=root(x,parent);
+    int b=root(y,parent);
+    if(siz[a]<siz[b])
+    {
+        parent[a]=b;
+        siz[b]+=siz[a];
+    }else{
+        parent[b]=a;
+        siz[a]+=siz[b];
+    }
+}
+bool find(int *parent,int x,int y)
+{ int a=root(x,parent);
+    int b=root(y,parent);
+    if(a==b)
+    {
+        return true;
+    }
+    return false;
+}
+int Solution::solve(int A, vector<vector<int> > &B) {
+    int parent[A+1];
+    int siz[A+1];
+    for(int i=0;i<=A;i++)
+     {
+         parent[i]=i;
+         siz[i]=1;
+     }
+     int a,b;
+    for(int i=0;i<B.size();i++)
+    {
+        a=B[i][0];
+        b=B[i][1];
+        if(find(parent,a,b))
+        {
+            return true;
+        }
+        union_bysize(parent,a,b,siz);
+    }
+   return false;
+}

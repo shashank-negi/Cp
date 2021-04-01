@@ -1,0 +1,34 @@
+void func( queue<Node*> &q, vector<int>& ans)
+{
+    while(q.size())
+    {
+   Node* n=q.front();
+    ans.push_back(n->data);
+    q.pop();
+    if(n->left)
+    {
+    q.push(n->left);
+    }
+    if(n->right)
+    {
+  q.push(n->right);    
+    }
+   }
+    return ;
+    
+}
+
+
+vector<int> levelOrder(Node* node)
+{
+ vector<int> ans;
+    if(node==NULL)
+    {
+        return ans;
+    }
+ queue<Node*> q;
+ q.push(node);
+ func(q,ans);
+ 
+ return ans;
+}

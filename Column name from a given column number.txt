@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+void func(int n)
+{ char c;
+    int p;
+     if(n<0)
+    {return;
+    }
+   
+    p=n/26;
+    p=p-1;
+  func(p)  ;
+    c='A'+n%26;
+    cout<<c;
+    
+    
+    
+     return ;
+}
+int main() {
+	int t,n;
+	cin>>t;
+	for(int i=0;i<t;i++)
+	{
+	    cin>>n;
+
+func(n-1);
+
+
+	    cout<<endl;
+	}
+	return 0;
+}

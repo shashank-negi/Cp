@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+
+int dp(int n, int x, int y, int z,int *arr)
+{  
+if(n==0)
+    {
+        return 0;
+    }
+	
+	 if(n<min(x,min(y,z)))
+{ 
+    return INT_MIN;
+}
+    if(arr[n]!=-1)
+    {
+        return arr[n];
+    }
+
+    
+  
+//	cout<<n<<"--->";
+    int a,b,c;
+    a=0;
+    b=0;
+    c=0;
+ 
+   
+       a=dp(n-x,x,y,z,arr);
+         
+    b=dp(n-y,x,y,z,arr);
+    
+    c=dp(n-z,x,y,z,arr);
+
+ arr[n]=1+max( a, max(b, c));
+  /* if(n==2)
+        {
+        	cout<<endl;
+        	cout<<arr[n];
+        	cout<<endl;
+		}*/
+    return arr[n];
+}
+
+int maximizeTheCuts(int n, int x, int y, int z)
+{
+    
+    int arr[n+1];
+
+memset(arr,-1,sizeof(arr));
+int ans;
+    ans= dp(n,x,y,z,arr);
+    if(ans<=0)
+    {
+        return 0;
+    }
+
+    return ans;
+}

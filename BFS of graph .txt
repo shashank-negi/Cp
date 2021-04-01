@@ -1,0 +1,33 @@
+	vector<int>bfsOfGraph(int V, vector<int> adj[]){
+	   
+	   int n;
+	   int arr[V];
+	   vector<int> v;
+	   memset(arr,0,sizeof(arr));
+	   queue<int> q;
+	   q.push(0);
+	   arr[0]=1;
+	   int x;
+	   while(q.size())
+	   {
+	       
+	       x=q.front();
+	      
+	     v.push_back(x);
+	       q.pop();
+	       for(int i=0;i<adj[x].size();i++)
+	       {
+	           if(arr[adj[x][i]]==1){
+	               //cout<<"d";
+	               continue;
+	           }
+	           q.push(adj[x][i]);
+	            arr[adj[x][i]]=1;
+	           
+	       }
+	       
+	       
+	   }
+	
+	   return v;
+	}

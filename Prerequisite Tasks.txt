@@ -1,0 +1,48 @@
+bool dfs(map<int,bool> &vis,vector<int> *m,int n,int s,map<int,bool> &check)
+    { vis[s]=true;
+             check[s]=true;
+    
+        for(int i=0;i<m[s].size();i++)
+        {
+            
+            if(vis[m[s][i]]==true)
+            {
+                return false;
+            }
+            
+      bool a=      dfs(vis,m,n, m[s][i],check);
+       if(a==false)
+       {
+        
+           return false;
+       }
+        }
+        
+        vis[s]=false;
+        return true;
+    }
+	bool isPossible(int n, vector<pair<int, int> >& pre) {
+	  
+            vector<int> m[n];
+        //bool arr[n];
+        map<int,bool> vis;
+          map<int,bool> check;
+        for(int i=0;i<pre.size();i++)
+        {
+            
+            m[pre[i].first].push_back(pre[i].second);
+       }
+      for(int i=0;i<n;i++)
+        {
+                if(check[i]!=true)
+                {
+               bool b= dfs(vis,m,n,i,check);
+               
+                if(b==false)
+                {
+                    return false;
+                } 
+                }
+       }
+       return true;
+	}

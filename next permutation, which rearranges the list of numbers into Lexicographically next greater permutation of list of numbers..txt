@@ -1,0 +1,42 @@
+ vector<int> nextPermutation(int N, vector<int> arr){
+        
+ 
+ int swap1 =-1;
+  for(int i=N-2;i>=0;--i)
+  {     if(arr[i]<arr[i+1])
+      {   swap1=i;
+          break;
+      }
+   }        if(swap1==-1)
+        {
+            int no=N/2;
+              for(int i=0;i<no;++i)
+  {    swap(arr[i],arr[N-i-1]);  }   
+      return arr;
+                             }      
+            int swap2=N-1;
+        int minn=INT_MAX;
+        for(int i=swap1+1;i<N;++i)
+  {
+      if(arr[i]>arr[swap1])
+      {
+          if(arr[i]<=minn)
+          {
+              minn=arr[i];
+              swap2=i;
+          }
+       }
+  }
+      swap(arr[swap1],arr[swap2]);
+ 
+                int no=N-swap1-1;
+        
+     //   cout<<no;
+        no=no/2;
+          for(int i=swap1+1;i<no+swap1+1;++i)
+  {  
+              swap(arr[i],arr[N-i+swap1]); 
+         
+  }
+        return arr;
+    }

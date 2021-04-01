@@ -1,0 +1,39 @@
+  bool isBST(Node* root) 
+    {
+        if(!root)
+      {
+          return true;
+      }
+       bool a= isBST(root->left);
+        bool b=isBST(root->right);
+        bool c=true;
+        int j,k;
+        if(root->left)
+        {
+           Node* lr=root->left;
+            while(lr)
+            {
+                
+            j=lr-> data;
+                lr=lr->right;
+            }
+            if(j>=root-> data)
+            {
+                c=false;
+            }
+        }if(root->right)
+        {
+            Node* rr=root->right;
+            while(rr)
+            {
+                
+            k=rr-> data;
+                rr=rr->left;
+            }
+            if(k<=root-> data)
+            {
+                c=false;
+            }
+        }
+       return a&b&c;
+    }
